@@ -11,15 +11,15 @@ cap = cv.VideoCapture(0) #0 is default webcam
 
 DIR = './data'
 
-datasize = 200
+datasize = 100
 signals = 36
 images = 0
 
 
 for uploaded in range(36):
 
-    b = False
-    while(True):
+    b = True
+    while(images <26):
         valid, image = cap.read()
         
         if not valid:
@@ -27,35 +27,45 @@ for uploaded in range(36):
             break
         cv.imshow('Live Webcam',image)
 
-        if cv.waitKey(1) == ord('q'):
-            print('Exiting')
-            b = True
-            break
+        
+        key = cv.waitKey(1)
 
-        if cv.waitKey(1) == ord('s'):
+        if  key == ord('q'):
+            print('Exiting')
+            b = False
+            break
+        
+        if key == ord('s'):
             print('Capturing')
             break
 
     if not b:
         break
-
+    
+    os.mkdir(DIR + '/' + str(images))
     uploaded = 0
+
     while(uploaded<datasize):
         valid, image = cap.read()
+
         if not valid:
             print('Webcam could not be opened')
             break
+
         cv.imshow('Live Webcam',image)
+        print(uploaded)
 
         cv.waitKey(25)
-        cv.imwrite(folder=, img=image, )
+        cv.imwrite(DIR + '/' + str(images) + '/' + str(uploaded)+'.png', image)
+        uploaded += 1
 
 
+    print('Done Uploading '+str(images))
 
+    key = True
+    uploaded = 0
+    images +=1
 
-
-
-    
 
 cap.release()
 cv.destroyAllWindows()
