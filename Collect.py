@@ -25,9 +25,9 @@ for uploaded in range(36):
         if not valid:
             print('Webcam could not be opened')
             break
-        cv.imshow('Live Webcam',image)
 
-        
+        cv.putText(image, 'Press s to start capturing, q to quit', (250, 100), cv.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 2)
+        cv.imshow('Live Webcam',image)
         key = cv.waitKey(1)
 
         if  key == ord('q'):
@@ -64,7 +64,7 @@ for uploaded in range(36):
 
     key = True
     uploaded = 0
-    images +=1
+    images += 1
 
 
 cap.release()
