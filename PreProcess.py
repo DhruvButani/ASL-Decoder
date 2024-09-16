@@ -11,14 +11,15 @@ mp_drawing = mp.solutions.drawing_utils
 
 hands = mp_hands.Hands(static_image_mode=True, max_num_hands=2, min_detection_confidence=0.5)
 
+data = []
+labels = []
+
 for d in os.listdir(DATA_DIR):
     
-    
-    for img in os.listdir(os.path.join(DATA_DIR, d)):
-        #data aus?
 
-        x = []
-        y = []
+    for img in os.listdir(os.path.join(DATA_DIR, d)):
+        data_xy = []
+
 
         print(os.path.join(DATA_DIR, d))
         print(os.path.join(DATA_DIR, d, img))
@@ -32,10 +33,15 @@ for d in os.listdir(DATA_DIR):
         
         if results.multi_hand_landmarks:
             for hand_landmarks in results.multi_hand_landmarks: #landmarks per image
-                for i in hand_landmarks.landmark:
-                    x.append(i.x)
-                    y.append(i.y)
+                for i in range(len(hand_landmarks.landmark)):
+                    data_xy.append(hand_landmarks.landmark[i])
+                    data_xy.append(hand_landmarks.landmark[i])
 
         
 
-        
+            data.append(data_xy)
+            labels.append(d)
+
+f = open('data.pickle', 'wb')
+pickle.dump({'data': data, 'labels': labels},f)  
+f.close()
