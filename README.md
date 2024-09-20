@@ -16,7 +16,8 @@
 - scikit-learn
 
 ### Preprocessing Data
-Run the `PreProcess.py` script to preprocess images and extract hand landmarks:
+Run the `PreProcess.py` script to preprocess images and extract hand landmarks
+
 Collect data by displaying hand singals infront of webcam, store to data folder
 
 
