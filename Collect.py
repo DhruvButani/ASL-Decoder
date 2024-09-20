@@ -2,12 +2,7 @@ import cv2 as cv
 import os
 
 
-# Per letter take 100 pictures
-# Take 100 pictures per everytime s is pressed
-# 
-#
-#
-cap = cv.VideoCapture(0) #0 is default webcam
+cap = cv.VideoCapture(0) 
 
 DIR = './data'
 
