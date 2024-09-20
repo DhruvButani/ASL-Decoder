@@ -9,7 +9,7 @@
 
 ## Requirements
 
-- Python 3.x
+- Python 3.11
 - OpenCV
 - MediaPipe
 - NumPy
