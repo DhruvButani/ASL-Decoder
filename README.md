@@ -1,4 +1,4 @@
-# ASL-Language-Decoder
+# ASL-Decoder
 
 ## Project Structure
 
